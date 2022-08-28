@@ -17,11 +17,12 @@ async fn main() {
     loop {
 
         let bytes_read = reader.read_line(&mut line).await.unwrap();
-        if bytes_read == 0 {
+         if bytes_read == 0 {
             break;
         }
 
         // write every single byte in the buffer
         writer.write_all(line.as_bytes()).await.unwrap();
+        line.clear();
     }
 }
